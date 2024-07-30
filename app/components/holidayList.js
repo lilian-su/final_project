@@ -45,8 +45,7 @@ export default function HolidayList() {
         fetchHolidays(countryCode2, setHolidaysCountry2);
     }, [countryCode1, countryCode2]);
 
-    function handleSearch() {
-        // Filter holidays for both countries by the selected date range
+    useEffect(() => {
         const filterByDateRange = (holidays) => {
             return holidays.filter((holiday) => {
                 if (!startDate && !endDate) return true;
@@ -62,69 +61,45 @@ export default function HolidayList() {
 
         setHolidaysCountry1(filteredHolidays1);
         setHolidaysCountry2(filteredHolidays2);
-    }
-
-    useEffect(() => {
-        handleSearch(); // Apply filtering whenever date range changes
-    }, [startDate, endDate]);
+    }, [startDate, endDate, holidaysCountry1, holidaysCountry2]);
 
     return (
         <section>
-            <div>
-                <label htmlFor="country-select1">Select Country 1: </label>
-                <select
-                    id="country-select1"
-                    value={countryCode1}
-                    onChange={(e) => setCountryCode1(e.target.value)}
-                >
-                    {countryCodes.map((code) => (
-                        <option key={code} value={code}>
-                            {code}
-                        </option>
-                    ))}
-                </select>
+            <div className="flex justify-center mb-7">
+                <div className="mx-10">
+                    <label htmlFor="start-date">Start Date: </label>
+                    <input type="date" id="start-date" value={startDate} onChange={(e) => setStartDate(e.target.value)}/>
+                </div>
+                <div>
+                    <label htmlFor="end-date">End Date: </label>
+                    <input type="date" id="end-date" value={endDate} onChange={(e) => setEndDate(e.target.value)}/>
+                </div>
             </div>
-            <div>
-                <label htmlFor="country-select2">Select Country 2: </label>
-                <select
-                    id="country-select2"
-                    value={countryCode2}
-                    onChange={(e) => setCountryCode2(e.target.value)}
-                >
-                    {countryCodes.map((code) => (
-                        <option key={code} value={code}>
-                            {code}
-                        </option>
-                    ))}
-                </select>
+            <div className="flex justify-center mb-7">
+                <div className="mx-10">
+                    <label htmlFor="country-select1">Select Country 1: </label>
+                    <select id="country-select1" value={countryCode1} onChange={(e) => setCountryCode1(e.target.value)}>
+                        {countryCodes.map((code) => (
+                            <option key={code} value={code}>
+                                {code}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="country-select2">Select Country 2: </label>
+                    <select id="country-select2" value={countryCode2} onChange={(e) => setCountryCode2(e.target.value)} >
+                        {countryCodes.map((code) => (
+                            <option key={code} value={code}>
+                                {code}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </div>
-            <div>
-                <label htmlFor="start-date">Start Date: </label>
-                <input
-                    type="date"
-                    id="start-date"
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
-                />
-            </div>
-            <div>
-                <label htmlFor="end-date">End Date: </label>
-                <input
-                    type="date"
-                    id="end-date"
-                    value={endDate}
-                    onChange={(e) => setEndDate(e.target.value)}
-                />
-            </div>
-            <button
-                onClick={handleSearch}
-                className="bg-blue-500 text-white px-4 py-2 rounded mt-2"
-            >
-                Search
-            </button>
             <div className="flex">
                 <div className="w-1/2">
-                    <h2 className="text-xl">Holidays in {countryCode1}</h2>
+                    <h2 className="text-xl flex justify-center">Holidays in {countryCode1}</h2>
                     {
                         holidaysCountry1.map((holiday) => (
                             <Holiday holidayObj={holiday} key={holiday.date}/>
@@ -132,7 +107,7 @@ export default function HolidayList() {
                     }
                 </div>
                 <div className="w-1/2">
-                    <h2 className="text-xl">Holidays in {countryCode2}</h2>
+                    <h2 className="text-xl flex justify-center">Holidays in {countryCode2}</h2>
                     {
                         holidaysCountry2.map((holiday) => (
                             <Holiday holidayObj={holiday} key={holiday.date}/>
