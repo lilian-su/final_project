@@ -5,7 +5,7 @@ import Holiday from "./holiday";
 
 
 const countryCodeToName = {
-    AD: "Andorra", AL: "Albania", AM: "Armenia", AR: "Argentina", AT: "Austria", AU: "Australia", AX: "Åland Islands",
+    AD: "Andorra", AL: "Albania", AM: "Armenia", AR: "Argentina", AT: "Austria", AU: "Australia", AX: "Aland Islands",
     BA: "Bosnia and Herzegovina", BB: "Barbados", BE: "Belgium", BG: "Bulgaria", BJ: "Benin", BO: "Bolivia", BR: "Brazil",
     BS: "Bahamas", BW: "Botswana", BY: "Belarus", BZ: "Belize", CA: "Canada", CH: "Switzerland", CL: "Chile", CN: "China",
     CO: "Colombia", CR: "Costa Rica", CU: "Cuba", CY: "Cyprus", CZ: "Czechia", DE: "Germany", DK: "Denmark", DO: "Dominican Republic",
