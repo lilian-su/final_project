@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Holiday from "./Holiday"; // Assuming this is a component for displaying each holiday
+import Holiday from "./holiday"; 
 
-// Mapping of country codes to country names
+
 const countryCodeToName = {
     AD: "Andorra", AL: "Albania", AM: "Armenia", AR: "Argentina", AT: "Austria", AU: "Australia", AX: "Åland Islands",
     BA: "Bosnia and Herzegovina", BB: "Barbados", BE: "Belgium", BG: "Bulgaria", BJ: "Benin", BO: "Bolivia", BR: "Brazil",

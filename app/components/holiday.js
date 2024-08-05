@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function Holiday({ holidayObj }) {
     const [isOpen, setIsOpen] = useState(false);
 
-    // Destructure and provide default values for properties
+
     const {
         date = "Not Available",
         localName = "Not Available",
